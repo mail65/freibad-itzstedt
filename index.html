@@ -8,204 +8,104 @@
 <meta name="apple-mobile-web-app-title" content="Freibad Itzstedt">
 <title>Freibad Itzstedt</title>
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  body {
-    font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;
-    background:#0a2540; min-height:100vh; min-height:100dvh;
-    overflow-x:hidden;
-  }
-  .bg {
-    position:fixed; inset:0; z-index:0;
-    background:linear-gradient(180deg,#0a2540 0%,#0e4f8a 40%,#1a8fc7 70%,#4dbde8 100%);
-    overflow:hidden;
-  }
-  .wave { position:absolute; bottom:0; left:-20%; width:140%; height:220px;
-    border-radius:50% 50% 0 0; animation:wave 6s ease-in-out infinite; }
-  .wave1 { background:#fff; opacity:0.12; }
-  .wave2 { background:#7dd3f8; opacity:0.10; height:180px; animation-delay:-2s; }
-  .wave3 { background:#93e4ff; opacity:0.08; height:150px; animation-delay:-4s; }
-  @keyframes wave { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
-  .sun { position:fixed; top:-40px; right:-40px; width:200px; height:200px;
-    background:radial-gradient(circle,#ffe066 0%,#ffb300 60%,transparent 70%);
-    border-radius:50%; opacity:0.3; z-index:0; }
-  .bubbles { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
-  .bubble { position:absolute; bottom:-60px; background:rgba(255,255,255,0.08);
-    border-radius:50%; animation:rise linear infinite; }
-  @keyframes rise { 0%{transform:translateY(0);opacity:0.5} 100%{transform:translateY(-100vh);opacity:0} }
-
-  .container { position:relative; z-index:1; max-width:480px; margin:0 auto; padding-bottom:48px; }
-
-  .header { text-align:center; padding:52px 24px 24px; }
-  .header .icon { font-size:48px; }
-  .header h1 { font-size:24px; font-weight:700; color:#fff; margin-top:8px; letter-spacing:-0.5px; }
-  .header p { font-size:13px; color:rgba(255,255,255,0.6); margin-top:4px; }
-
-  /* Tab switcher */
-  .tabs { display:flex; gap:8px; padding:0 16px 20px; }
-  .tab {
-    flex:1; padding:10px 4px; border-radius:14px; border:none; cursor:pointer;
-    font-size:14px; font-weight:600; transition:all 0.2s;
-    background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.6);
-  }
-  .tab.active { background:rgba(255,255,255,0.95); color:#0a2540; }
-  .tab span { display:block; font-size:18px; margin-bottom:2px; }
-
-  /* Cards */
-  .card-view { display:none; padding:0 16px; }
-  .card-view.active { display:block; }
-
-  .card-inner {
-    background:rgba(255,255,255,0.96); border-radius:28px;
-    overflow:hidden; box-shadow:0 12px 48px rgba(0,0,0,0.3);
-  }
-  .card-top {
-    padding:20px 24px 16px; display:flex; align-items:center; gap:14px;
-  }
-  .avatar {
-    width:56px; height:56px; border-radius:50%; font-size:26px;
-    display:flex; align-items:center; justify-content:center; flex-shrink:0;
-  }
-  .card-name { font-size:22px; font-weight:700; color:#0a2540; }
-  .card-type { font-size:13px; color:#777; margin-top:2px; }
-  .badge {
-    margin-left:auto; font-size:11px; font-weight:700; letter-spacing:0.5px;
-    padding:5px 12px; border-radius:20px; color:#fff;
-  }
-
-  /* QR — groß und prominent */
-  .qr-section {
-    padding:4px 20px 24px;
-    display:flex; flex-direction:column; align-items:center;
-  }
-  .qr-frame {
-    background:#fff; border-radius:20px; padding:16px;
-    box-shadow:0 4px 20px rgba(0,0,0,0.1);
-    border:1.5px solid rgba(0,0,0,0.06);
-  }
-  .qr-frame img {
-    /* Full width minus padding — max screen-friendly size */
-    width: min(280px, calc(100vw - 100px));
-    height: min(280px, calc(100vw - 100px));
-    display:block;
-  }
-  .card-num { margin-top:10px; font-size:12px; color:#aaa; letter-spacing:1.5px; }
-  .card-valid { font-size:12px; color:#bbb; margin-top:3px; }
-
-  .hint {
-    text-align:center; margin-top:20px;
-    background:rgba(255,255,255,0.12); border-radius:16px;
-    padding:14px 20px;
-  }
-  .hint p { font-size:13px; color:rgba(255,255,255,0.8); line-height:1.5; }
-
-  .footer { text-align:center; padding:28px 24px 0;
-    color:rgba(255,255,255,0.35); font-size:11px; line-height:1.7; }
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;background:#0a2540;min-height:100vh;min-height:100dvh;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;background:linear-gradient(180deg,#0a2540 0%,#0e4f8a 40%,#1a8fc7 70%,#4dbde8 100%);overflow:hidden}
+.wave{position:absolute;bottom:0;left:-20%;width:140%;height:220px;border-radius:50% 50% 0 0;animation:wave 6s ease-in-out infinite}
+.wave1{background:#fff;opacity:.12}.wave2{background:#7dd3f8;opacity:.10;height:180px;animation-delay:-2s}.wave3{background:#93e4ff;opacity:.08;height:150px;animation-delay:-4s}
+@keyframes wave{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+.sun{position:fixed;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,#ffe066 0%,#ffb300 60%,transparent 70%);border-radius:50%;opacity:.3;z-index:0}
+.bubbles{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bubble{position:absolute;bottom:-60px;background:rgba(255,255,255,.08);border-radius:50%;animation:rise linear infinite}
+@keyframes rise{0%{transform:translateY(0);opacity:.5}100%{transform:translateY(-100vh);opacity:0}}
+.container{position:relative;z-index:1;max-width:480px;margin:0 auto;padding-bottom:48px}
+.header{text-align:center;padding:52px 24px 24px}
+.header .icon{font-size:48px}
+.header h1{font-size:24px;font-weight:700;color:#fff;margin-top:8px;letter-spacing:-.5px}
+.header p{font-size:13px;color:rgba(255,255,255,.6);margin-top:4px}
+.tabs{display:flex;gap:8px;padding:0 16px 20px}
+.tab{flex:1;padding:10px 4px;border-radius:14px;border:none;cursor:pointer;font-size:14px;font-weight:600;transition:all .2s;background:rgba(255,255,255,.12);color:rgba(255,255,255,.6)}
+.tab.active{background:rgba(255,255,255,.95);color:#0a2540}
+.tab span{display:block;font-size:20px;margin-bottom:2px}
+.card-view{display:none;padding:0 16px}
+.card-view.active{display:block}
+.card-inner{background:rgba(255,255,255,.96);border-radius:28px;overflow:hidden;box-shadow:0 12px 48px rgba(0,0,0,.3)}
+.card-top{padding:20px 24px 16px;display:flex;align-items:center;gap:14px}
+.avatar{width:56px;height:56px;border-radius:50%;font-size:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.card-name{font-size:22px;font-weight:700;color:#0a2540}
+.card-type{font-size:13px;color:#777;margin-top:2px}
+.badge{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.5px;padding:5px 12px;border-radius:20px;color:#fff}
+.qr-section{padding:4px 20px 24px;display:flex;flex-direction:column;align-items:center}
+.qr-frame{background:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,.1);border:1.5px solid rgba(0,0,0,.06)}
+.qr-frame img{width:min(280px,calc(100vw - 100px));height:min(280px,calc(100vw - 100px));display:block}
+.card-num{margin-top:10px;font-size:12px;color:#aaa;letter-spacing:1.5px}
+.card-valid{font-size:12px;color:#bbb;margin-top:3px}
+.hint{text-align:center;margin-top:20px;background:rgba(255,255,255,.12);border-radius:16px;padding:14px 20px}
+.hint p{font-size:13px;color:rgba(255,255,255,.8);line-height:1.5}
+.footer{text-align:center;padding:28px 24px 0;color:rgba(255,255,255,.35);font-size:11px;line-height:1.7}
 </style>
 </head>
 <body>
 <div class="bg"><div class="wave wave1"></div><div class="wave wave2"></div><div class="wave wave3"></div></div>
 <div class="sun"></div>
 <div class="bubbles" id="bubbles"></div>
-
 <div class="container">
-  <div class="header">
-    <div class="icon">🌊</div>
-    <h1>Freibad Itzstedt</h1>
-    <p>Itzstedter See · Saison 2026</p>
-  </div>
-
-  <div class="tabs">
-    <button class="tab active" onclick="show(0)" id="tab0"><span>🏊</span>Tobias</button>
-    <button class="tab " onclick="show(1)" id="tab1"><span>🐬</span>Kate</button>
-    <button class="tab " onclick="show(2)" id="tab2"><span>🦈</span>Franz</button>
-  </div>
-
+  <div class="header"><div class="icon">🌊</div><h1>Freibad Itzstedt</h1><p>Itzstedter See · Saison 2026</p></div>
+  <div class="tabs"><button class="tab active" onclick="show(0)"><span>🏊</span>Tobias</button><button class="tab " onclick="show(1)"><span>🐬</span>Kate</button><button class="tab " onclick="show(2)"><span>🦈</span>Franz</button></div>
   <div class="card-view active" id="card0">
     <div class="card-inner">
       <div class="card-top">
-        <div class="avatar" style="background:#0a5c8a22;">🏊</div>
-        <div>
-          <div class="card-name">Tobias</div>
-          <div class="card-type">Saisonkarte · Erwachsene</div>
-        </div>
-        <div class="badge" style="background:#0a5c8a;">2026</div>
+        <div class="avatar" style="background:#0a5c8a22">🏊</div>
+        <div><div class="card-name">Tobias</div><div class="card-type">Saisonkarte · Erwachsene</div></div>
+        <div class="badge" style="background:#0a5c8a">2026</div>
       </div>
       <div class="qr-section">
-        <div class="qr-frame">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAIAAAD2HxkiAAAErUlEQVR4nO3dwW3cMBBA0XXgm/pIH6k8faSPPSsdGEpM8FPie+dgpV3lgz4MRh/neb6Azo/w2oAIoeckhJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoTY56gPOn7+eu3q/ef3ayWjnsWV7+W5f5+TEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCOEps6N3nLG8YtRs5JXPGTWrudrvvNr9XDFzJtZJCDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhLDT7OhqM3t3nGlcbe/oKMfGz91JCDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhBBbbnZ0Z3ec+eT7nIQQEyHERAgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQkyEEBMhxEQIseX2ju68M/PKd7+ym/TKv1ntd34vdj8zOQkhJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQdpodHfVOdubMoI6a5/Tcv+YkhJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQoh9nOdZ3wP/4I47RfmakxBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghttw76+3DfN6zuOPe0ffE+VsnIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEcJT9o7ecc7wju9kn3nPq+0vPSbe88xrOQkhJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQdpodvWLmvKJ9mPf6fd6LzbKO4iSEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCeMrs6FP3c65mtd9wtV2go3hnPWzEn6MQEyHERAgxEUJMhBATIcRECDERQkyEEBMhxD5HfdDMd9bv/DmrGfXdV7uWd9bDRvw5CjERQkyEEBMhxEQIMRFCTIQQEyHERAgxEcJOe0d3NnMG9YqZ1xrlfcPZ2iuchBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAg77R19qtVmGp+6B/WYODc7k5MQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgI4Smzo3ec2VttJnbmtUY9i5kzqO+J9zzzfpyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhBATIcRECDvNjj51fnLUte74XvtRjo331joJISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGLLzY5yrxnL1XaK3pGTEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCFmdnSS1XaBjrqfmd/reOjcrJMQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgIIbbc7OhT90/ecTbyqbtJjwu/88z/h05CiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihNjHeZ5DPuipc49XzJwz3Pl3Xo29o/AQ/hyFmAghJkKIiRBiIoSYCCEmQoiJEGIihJgI4Smzo8D/cRJCTIQQEyHERAgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQkyEEBMhvFp/AY7K6hs14P+sAAAAAElFTkSuQmCC" alt="QR Tobias" />
-        </div>
+        <div class="qr-frame"><img src="data:image/png;base64,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" alt="QR Tobias"/></div>
         <div class="card-num">030500000002079</div>
         <div class="card-valid">Gültig bis 26.05.2027</div>
       </div>
     </div>
-    <div class="hint">
-      <p>📱 Handy direkt vor den Scanner halten<br>QR-Code muss gut beleuchtet sein</p>
-    </div>
+    <div class="hint"><p>📱 Handy direkt vor den Scanner halten</p></div>
   </div>
-
   <div class="card-view " id="card1">
     <div class="card-inner">
       <div class="card-top">
-        <div class="avatar" style="background:#e85d9a22;">🐬</div>
-        <div>
-          <div class="card-name">Kate</div>
-          <div class="card-type">Saisonkarte · Kind · Saisonkarte</div>
-        </div>
-        <div class="badge" style="background:#e85d9a;">2026</div>
+        <div class="avatar" style="background:#e85d9a22">🐬</div>
+        <div><div class="card-name">Kate</div><div class="card-type">Saisonkarte · Kind · Saisonkarte</div></div>
+        <div class="badge" style="background:#e85d9a">2026</div>
       </div>
       <div class="qr-section">
-        <div class="qr-frame">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAIAAAD2HxkiAAAEvUlEQVR4nO3dwY3bMBBAUTvIbftIH6k8faQPn5UOAgUh+EnqvQIsWd4P7mEwel/X9QI638JrAyKEnpMQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGLfR33Q14+fr6f6/P417fncudYdd+5n5vfa0ajfwkkIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQkyEcMrs6MxZu5lmznzeudZqM6irXWuUmTOxTkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEJ82OrjazN3OmcbXvNWrv6KnPZyYnIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJsudnRU+04z8kcTkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmNnRSUbNhe74znr+zkkIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQkyEEFtudvTUmcaZc6F3rLbj9HPo736HkxBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAjhSbOjM2cjn7x3dMc51SdzEkJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyGcMjv65L2RM602F+p3/39OQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoTY+7qu11ONmrEcNT858z3yO+5B/Wz4OXc4CSEmQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBO2Tu647vU75h5zzPnQnfcO/p16PdyEkJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyGcMju6mtXmMGfuupw577rj8/labNbXSQgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQ23J2dMf5wJlmvm/91Gf4sXcUnsO/oxATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHE3td1DfmgU2c1Z74nfcd9qqfODN9h7ygcwr+jEBMhxEQIMRFCTIQQEyHERAgxEUJMhBATIZyyd3S1mc8dZzVnvrd9Jvfzd05CiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihNhye0d3tON86Y7f6w57R4F/5t9RiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEE7ZO7rj/smZs4g77h099Vp3zLyWkxBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAjhSbOjp+6NHHWt1Xa3jno+q80Mfxa7HychxEQIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQmy52dEnmzlfutqezydzEkJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHEzI4uZMf32q/2ve4Y9TmjnqGTEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCG23OyoXZfnGfWbfibOl878O3QSQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhBATITxpdnTUXN+TrbbDc8c9qJ+J17rDSQgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQe1/XVd8DPJqTEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCOHV+gP+JRVYph8V5wAAAABJRU5ErkJggg==" alt="QR Kate" />
-        </div>
+        <div class="qr-frame"><img src="data:image/png;base64,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" alt="QR Kate"/></div>
         <div class="card-num">030500000002080</div>
         <div class="card-valid">Gültig bis 26.05.2027</div>
       </div>
     </div>
-    <div class="hint">
-      <p>📱 Handy direkt vor den Scanner halten<br>QR-Code muss gut beleuchtet sein</p>
-    </div>
+    <div class="hint"><p>📱 Handy direkt vor den Scanner halten</p></div>
   </div>
-
   <div class="card-view " id="card2">
     <div class="card-inner">
       <div class="card-top">
-        <div class="avatar" style="background:#2ecc7122;">🦈</div>
-        <div>
-          <div class="card-name">Franz</div>
-          <div class="card-type">Saisonkarte · Kind · Saisonkarte</div>
-        </div>
-        <div class="badge" style="background:#2ecc71;">2026</div>
+        <div class="avatar" style="background:#2ecc7122">🦈</div>
+        <div><div class="card-name">Franz</div><div class="card-type">Saisonkarte · Kind · Saisonkarte</div></div>
+        <div class="badge" style="background:#2ecc71">2026</div>
       </div>
       <div class="qr-section">
-        <div class="qr-frame">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAIAAAD2HxkiAAAEuklEQVR4nO3dwW3dSBRFQcnw7ufhPBz55DF5cE1nYBAw0eeRXRWATJk4aC0umt/neX4BnR/hvw2IEHpOQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghJkKI/bzrB31+/f7a1fH/f7f8/1z5OdN47//OSQgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCTITwlu3oFTtvI1f+7tN2qju/9yuchBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAg7bUenbfambRpX7lSn7Us/G793JyHERAgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCbNx29K12/rY7f+ckhJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQojZji6y8i7QaXeK8ndOQoiJEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoTYuO3ozpvGad+IX/k8x8bv3UkIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQkyEsNN2dOfvtk+7U3Tlu9j5vV/hJISYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghJkKIfZ/nWT8DwV2g0+4d3ZmTEGIihJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCE2bjv6xHs1pz3PSiv3pZ+XbmudhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAhv+Wb9XdvIu/Z4K7///sQN6hM3n8fCXehKTkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEt2xH33o/57Td4xXTNpZP3MQeC9+XkxBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghNu6b9VdM2xmu3Ls+8ZmvOB74rfm7OAkhJkKIiRBiIoSYCCEmQoiJEGIihJgIISZCiIkQdrp39Im7vic+88q7QN+6Zf0s/N2dhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAixR947+kR3bRHf+nOueOIzX+EkhJgIISZCiIkQYiKEmAghJkKIiRBiIoSYCCEmQnjLvaPT7o1c6crO8ImbxrfuQqdxEkJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHs9M36J37b/a4t4rRt5LTN5zFsW+ub9bARf45CTIQQEyHERAgxEUJMhBATIcRECDERQkyEsNN29IqV90ZO27Ku3IWu/H+e9nsdw967kxBiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKEmAghNm47+lbT9pwr95Mr71w9HrgvdRJCTIQQEyHERAgxEUJMhBATIcRECDERQkyEEBMhxGxHF5n2zfpp36O/4q37UichxEQIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQmzcdnTa98Tv8tZd6Fu/R3+4dxT24c9RiIkQYiKEmAghJkKIiRBiIoSYCCEmQoiJEHbajq7cRj7RtN3syq3mZ9h9oe4dhY34cxRiIoSYCCEmQoiJEGIihJgIISZCiIkQYiKE2Pd5nvUzwNachBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAgxEUJMhBATIcRECDERQkyEEBMhxEQIMRFCTIQQEyHERAhfrT+QwSn+sVDIUgAAAABJRU5ErkJggg==" alt="QR Franz" />
-        </div>
+        <div class="qr-frame"><img src="data:image/png;base64,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" alt="QR Franz"/></div>
         <div class="card-num">030500000002081</div>
         <div class="card-valid">Gültig bis 26.05.2027</div>
       </div>
     </div>
-    <div class="hint">
-      <p>📱 Handy direkt vor den Scanner halten<br>QR-Code muss gut beleuchtet sein</p>
-    </div>
+    <div class="hint"><p>📱 Handy direkt vor den Scanner halten</p></div>
   </div>
-
-  <div class="footer">
-    Freibad Itzstedt · Seeweg 29 · 23845 Itzstedt
-  </div>
+  <div class="footer">Freibad Itzstedt · Seeweg 29 · 23845 Itzstedt</div>
 </div>
-
 <script>
-function show(idx) {
-  document.querySelectorAll('.card-view').forEach((c,i) => c.classList.toggle('active', i===idx));
-  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+function show(i){
+  document.querySelectorAll('.card-view').forEach((c,j)=>c.classList.toggle('active',i===j));
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',i===j));
 }
-const b = document.getElementById('bubbles');
-for(let i=0;i<10;i++){
-  const el=document.createElement('div'); el.className='bubble';
-  const s=8+Math.random()*20;
-  el.style=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;
-  b.appendChild(el);
-}
+const b=document.getElementById('bubbles');
+for(let i=0;i<10;i++){const el=document.createElement('div');el.className='bubble';const s=8+Math.random()*20;el.style=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${7+Math.random()*10}s;animation-delay:${Math.random()*8}s;`;b.appendChild(el);}
 </script>
 </body>
 </html>
